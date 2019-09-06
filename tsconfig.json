@@ -1,0 +1,25 @@
+{
+    "version": "3.6.2",
+    "compilerOptions": {
+        "outDir": "dist",
+        "target": "es2015",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "sourceMap": false,
+        "noImplicitAny": false,
+        "declaration": true
+    },
+    "exclude": [
+        "dist",
+        "node_modules"
+    ],
+    "include": [
+        "**/*.ts"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "compileOnSave":  true
+}
