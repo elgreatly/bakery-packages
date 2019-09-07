@@ -7,7 +7,7 @@ export default class BakeryConstants {
             },
             {
                 cost: 6.99,
-                quantity: 3  
+                quantity: 3
             }
         ],
         mb11: [
@@ -21,7 +21,7 @@ export default class BakeryConstants {
             },
             {
                 cost: 9.95,
-                quantity: 2 
+                quantity: 2
             }
         ],
         cf: [
@@ -35,9 +35,9 @@ export default class BakeryConstants {
             },
             {
                 cost: 5.95,
-                quantity: 3  
+                quantity: 3
             }
         ]
-    };    
-    public static BAKERY_TYPES = ["vs5", "mb11", "cf"];
+    };
+    public static BAKERY_TYPES = ['vs5', 'mb11', 'cf'];
 }

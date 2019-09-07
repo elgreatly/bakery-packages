@@ -7,8 +7,8 @@ export class BakeryItemModel {
     }
 
     static getBakeryItems(input: string): BakeryItemModel[] {
-        let inputs = input.split(',');
-        let bakeryItems: BakeryItemModel[] = [];
+        const inputs = input.split(',');
+        const bakeryItems: BakeryItemModel[] = [];
 
         inputs.forEach(item => {
             bakeryItems.push(this.getBakeryItem(item));
@@ -18,7 +18,7 @@ export class BakeryItemModel {
     }
 
     private static getBakeryItem(item: string): BakeryItemModel {
-        let itemSplited = item.split(' ');
+        const itemSplited = item.split(' ');
 
         return new BakeryItemModel({
             type: itemSplited[1],

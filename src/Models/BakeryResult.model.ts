@@ -1,4 +1,4 @@
-import { BakeryResultPackageModel } from "./BakeryResultPackage.model";
+import { BakeryResultPackageModel } from './BakeryResultPackage.model';
 
 export class BakeryResultModel {
     type: string;
@@ -6,7 +6,7 @@ export class BakeryResultModel {
     cost: number;
     packages: BakeryResultPackageModel[];
     remain: number;
-    
+
     constructor(init?: Partial<BakeryResultModel>) {
         Object.assign(this, init);
     }

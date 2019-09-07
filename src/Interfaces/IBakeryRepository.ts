@@ -1,4 +1,4 @@
-import { PackageItemModel } from "../Models/PackageItem.model";
+import { PackageItemModel } from '../Models/PackageItem.model';
 
 export interface IBakeryRepository {
     getAvailablePackages(type: string): PackageItemModel[];
