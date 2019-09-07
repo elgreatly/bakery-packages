@@ -73,8 +73,8 @@ export class BakeryManager implements IBakeryManager {
     // get remain and add one package item result
     addResultPackage(resultPackage: BakeryResultModel, quantity: number, 
         packIndex: number, packages: PackageItemModel[]) {
-        let numbers = Math.floor(quantity / packages[packIndex].quantity);
-        let remain = quantity % packages[packIndex].quantity;
+        const numbers = Math.floor(quantity / packages[packIndex].quantity);
+        const remain = quantity % packages[packIndex].quantity;
         
         resultPackage.packages.push({
             pack: packages[packIndex].quantity,
