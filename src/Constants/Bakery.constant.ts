@@ -1,44 +1,43 @@
 export default class BakeryConstants {
-    static BAKERY_PACKAGES = {
+    public static BAKERY_PACKAGES = {
         vs5: [
             {
-                quantity: 5,
-                cost: 8.99
+                cost: 8.99,
+                quantity: 5
             },
             {
-                quantity: 3,
-                cost: 6.99    
+                cost: 6.99,
+                quantity: 3  
             }
         ],
         mb11: [
             {
-                quantity: 8,
-                cost: 24.95
+                cost: 24.95,
+                quantity: 8
             },
             {
-                quantity: 5,
-                cost: 16.95
+                cost: 16.95,
+                quantity: 5
             },
             {
-                quantity: 2,
-                cost: 9.95    
+                cost: 9.95,
+                quantity: 2 
             }
         ],
         cf: [
             {
-                quantity: 9,
-                cost: 16.99
+                cost: 16.99,
+                quantity: 9
             },
             {
-                quantity: 5,
-                cost: 9.95
+                cost: 9.95,
+                quantity: 5
             },
             {
-                quantity: 3,
-                cost: 5.95    
+                cost: 5.95,
+                quantity: 3  
             }
         ]
-    }
-    
-    static BAKERY_TYPES = ['vs5', 'mb11', 'cf'];
+    };    
+    public static BAKERY_TYPES = ["vs5", "mb11", "cf"];
 }

@@ -23,33 +23,30 @@ export class BakeryManager implements IBakeryManager {
 
     getPackagesForItems(bakeryItem: BakeryItemModel): BakeryResultModel {
         let resultPackage: BakeryResultModel = new BakeryResultModel();
-
         let bakeryRepository =  new BakeryRepository();
-
         let packages = bakeryRepository.getAvailablePackages(bakeryItem.type);
         let remain = bakeryItem.quantity;
-        let totalCost = 0;
         let i = 0;
         let j = 1;
 
         while (remain !== 0) {
+            // break when checked all cases and still not found any correct match 
             if (i === packages.length) break;
 
             resultPackage.packages = [];
 
             remain = this.getRmainAndAddPackages(resultPackage, bakeryItem, i, j, packages);
-
+            
+            // if in this case not exact match the items try the next case ex: if we have packages 8, 5, 3
+            // and 8, 5, 3 not match then try 8, 3 without 5
             if (remain) j++;
             
+            // if all cases with the same base not get exact match then try with the next base
+            // ex: if 8, 5, 3 and 8, 3 not get the exact match then go to the next base 5 and continue 5, 3 
             if (j >= packages.length) {
                 i++;
                 j = i + 1;
             }
-        }
-
-        // if remain equal 0 check this is fit packages
-        if (!remain) {
-            resultPackage.isFitPackages = true;
         }
 
         resultPackage.remain = remain;
@@ -58,7 +55,8 @@ export class BakeryManager implements IBakeryManager {
     }
 
     // get last remain items and all minmum number of packages 
-    getRmainAndAddPackages(resultPackage: BakeryResultModel, bakeryItem: BakeryItemModel, firstIndex: number, nextIndex: number, packages: PackageItemModel[]): number {
+    getRmainAndAddPackages(resultPackage: BakeryResultModel, bakeryItem: BakeryItemModel, 
+        firstIndex: number, nextIndex: number, packages: PackageItemModel[]): number {
         let remain = this.addResultPackage(resultPackage, bakeryItem.quantity, firstIndex, packages);
 
         for (let packIndex = nextIndex; packIndex < packages.length; packIndex++) {
@@ -73,7 +71,8 @@ export class BakeryManager implements IBakeryManager {
     }
 
     // get remain and add one package item result
-    addResultPackage(resultPackage: BakeryResultModel, quantity: number, packIndex: number, packages: PackageItemModel[]) {
+    addResultPackage(resultPackage: BakeryResultModel, quantity: number, 
+        packIndex: number, packages: PackageItemModel[]) {
         let numbers = Math.floor(quantity / packages[packIndex].quantity);
         let remain = quantity % packages[packIndex].quantity;
         
@@ -90,7 +89,8 @@ export class BakeryManager implements IBakeryManager {
         let totalCost = 0;
         packages.forEach(packItem => {
             totalCost += packItem.count * packItem.cost;
-        })
+        });
+
         return totalCost;
     }
 }

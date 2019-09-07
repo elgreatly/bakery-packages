@@ -4,7 +4,6 @@ import { PackageItemModel } from "../Models/PackageItem.model";
 import { BakeryResultPackageModel } from "../Models/BakeryResultPackage.model";
 
 export interface IBakeryManager {
-    
     getMinimunPackges(bakeryItems: BakeryItemModel[]): BakeryResultModel[];
     getPackagesForItems(bakeryItem: BakeryItemModel): BakeryResultModel;
     getRmainAndAddPackages(resultPackage: BakeryResultModel, bakeryItem: BakeryItemModel, firstIndex: number, nextIndex: number, packages: PackageItemModel[]): number;

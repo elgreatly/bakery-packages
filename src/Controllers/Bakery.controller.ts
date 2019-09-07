@@ -1,7 +1,7 @@
 import { BakeryItemModel } from "../Models/BakeryItem.model";
 import { BakeryManager } from "../Managers/Bakery.manager";
-import { IBakeryController } from "../Interfaces/IBakeryController";
 import BakeryConstants from "../Constants/Bakery.constant";
+import { IBakeryController } from "../Interfaces/IBakeryController";
 
 export class BakeryController implements IBakeryController {
     bakeryItems: BakeryItemModel[];
@@ -25,10 +25,14 @@ export class BakeryController implements IBakeryController {
             let bakeryTypesPackages = bakeryManager.getMinimunPackges(this.bakeryItems); 
 
             bakeryTypesPackages.forEach(bakeryType => {
-                result += `${bakeryType.quantity} ${bakeryType.type.toUpperCase()} $${bakeryType.cost.toFixed(2)} \n`;
-                bakeryType.packages.forEach(packItem => {
-                    result += `   ${packItem.count} * ${packItem.pack} $${packItem.cost.toFixed(2)} \n`;
-                })
+                if (bakeryType.remain) {
+                    result += `${bakeryType.quantity} ${bakeryType.type.toUpperCase()} exact match not possible \n`;
+                } else {
+                    result += `${bakeryType.quantity} ${bakeryType.type.toUpperCase()} $${bakeryType.cost.toFixed(2)} \n`;
+                    bakeryType.packages.forEach(packItem => {
+                        result += `   ${packItem.count} * ${packItem.pack} $${packItem.cost.toFixed(2)} \n`;
+                    });
+                }
             });
         }
 
