@@ -16,7 +16,8 @@ describe('Bakery Manager', () => {
     });
 
     it('should return correct cost of packages', () => {
-        let packages: BakeryResultPackageModel[] = [
+        // tslint:disable-next-line: no-shadowed-variable
+        const packages: BakeryResultPackageModel[] = [
             new BakeryResultPackageModel({
                 pack: 5,
                 count: 1,
@@ -30,8 +31,8 @@ describe('Bakery Manager', () => {
         ];
 
         const bakeryManager = new BakeryManager();
-        let result = bakeryManager.getTotalCost(packages);
-        
+        const result = bakeryManager.getTotalCost(packages);
+
         expect(result).to.equal(22.97);
     });
 
@@ -41,12 +42,12 @@ describe('Bakery Manager', () => {
             type: 'vs5'
         });
 
-        let resultPackage: BakeryResultModel = new BakeryResultModel({
+        const resultPackage: BakeryResultModel = new BakeryResultModel({
             packages: []
         });
 
         const bakeryManager = new BakeryManager();
-        let remain = bakeryManager.addResultPackage(resultPackage, backeryItem.quantity, 0, packages);
+        const remain = bakeryManager.addResultPackage(resultPackage, backeryItem.quantity, 0, packages);
 
         expect(resultPackage.packages.length).to.equal(1);
         expect(resultPackage.packages[0].pack).to.equal(5);
@@ -60,12 +61,12 @@ describe('Bakery Manager', () => {
             quantity: 8,
             type: 'vs5'
         });
-        let resultPackage: BakeryResultModel = new BakeryResultModel({
+        const resultPackage: BakeryResultModel = new BakeryResultModel({
             packages: []
         });
-        
+
         const bakeryManager = new BakeryManager();
-        let remain = bakeryManager.getRmainAndAddPackages(resultPackage, backeryItem, 0, 1, packages);
+        const remain = bakeryManager.getRmainAndAddPackages(resultPackage, backeryItem, 0, 1, packages);
 
         expect(resultPackage.packages.length).to.equal(2);
         expect(resultPackage.packages[0].pack).to.equal(5);
@@ -80,12 +81,12 @@ describe('Bakery Manager', () => {
             quantity: 6,
             type: 'vs5'
         });
-        let resultPackage: BakeryResultModel = new BakeryResultModel({
+        const resultPackage: BakeryResultModel = new BakeryResultModel({
             packages: []
         });
-        
+
         const bakeryManager = new BakeryManager();
-        let remain = bakeryManager.getRmainAndAddPackages(resultPackage, backeryItem, 0, 1, packages);
+        const remain = bakeryManager.getRmainAndAddPackages(resultPackage, backeryItem, 0, 1, packages);
 
         expect(resultPackage.packages.length).to.equal(1, 'length');
         expect(resultPackage.packages[0].pack).to.equal(5, 'pack');
@@ -98,9 +99,9 @@ describe('Bakery Manager', () => {
             quantity: 6,
             type: 'vs5'
         });
-        
+
         const bakeryManager = new BakeryManager();
-        let resultPackage = bakeryManager.getMinimumPackagesForItem(backeryItem);
+        const resultPackage = bakeryManager.getMinimumPackagesForItem(backeryItem);
 
         expect(resultPackage.packages.length).to.equal(1, 'length');
         expect(resultPackage.packages[0].pack).to.equal(3, 'pack');
@@ -113,9 +114,9 @@ describe('Bakery Manager', () => {
             quantity: 7,
             type: 'vs5'
         });
-        
+
         const bakeryManager = new BakeryManager();
-        let resultPackage = bakeryManager.getMinimumPackagesForItem(backeryItem);
+        const resultPackage = bakeryManager.getMinimumPackagesForItem(backeryItem);
 
         expect(resultPackage.remain).to.equal(1, 'remain');
     });
@@ -125,9 +126,9 @@ describe('Bakery Manager', () => {
             quantity: 2,
             type: 'vs5'
         });
-        
+
         const bakeryManager = new BakeryManager();
-        let resultPackage = bakeryManager.getMinimumPackagesForItem(backeryItem);
+        const resultPackage = bakeryManager.getMinimumPackagesForItem(backeryItem);
 
         expect(resultPackage.remain).to.equal(2, 'remain');
     });
@@ -143,9 +144,9 @@ describe('Bakery Manager', () => {
                 type: 'mb11'
             }),
         ];
-        
+
         const bakeryManager = new BakeryManager();
-        let resultPackage = bakeryManager.getMinimunPackges(backeryItems);
+        const resultPackage = bakeryManager.getMinimunPackges(backeryItems);
 
         expect(resultPackage[0].type).to.equal('vs5', 'VS5 Type');
         expect(resultPackage[0].remain).to.equal(0, 'VS5 remain');

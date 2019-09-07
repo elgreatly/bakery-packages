@@ -7,7 +7,7 @@ export class BakeryController implements IBakeryController {
     bakeryItems: BakeryItemModel[];
 
     getPackges(input: string): string {
-        let result: string;
+        let result = '';
         let isTypesExist = true;
         this.bakeryItems = BakeryItemModel.getBakeryItems(input.toLowerCase());
 
@@ -27,7 +27,7 @@ export class BakeryController implements IBakeryController {
     }
 
     resultFormat(bakeryItems: BakeryItemModel[]) {
-        let result: string;
+        let result = '';
         const bakeryManager = new BakeryManager();
         const bakeryTypesPackages = bakeryManager.getMinimunPackges(bakeryItems);
 
