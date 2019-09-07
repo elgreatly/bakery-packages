@@ -8,7 +8,6 @@ export class BakeryController implements IBakeryController {
     
     getPackges(input: string): string {
         let result: string = '';
-
         let isTypesExist = true;
         this.bakeryItems = BakeryItemModel.getBakeryItems(input.toLowerCase());
         
@@ -21,8 +20,8 @@ export class BakeryController implements IBakeryController {
         if (!isTypesExist) {
             console.log(new Error('Wrong input please add input like that 10 VS5,14 MB11,13 CF'));
         } else {
-            let bakeryManager = new BakeryManager();
-            let bakeryTypesPackages = bakeryManager.getMinimunPackges(this.bakeryItems); 
+            const bakeryManager = new BakeryManager();
+            const bakeryTypesPackages = bakeryManager.getMinimunPackges(this.bakeryItems); 
 
             bakeryTypesPackages.forEach(bakeryType => {
                 if (bakeryType.remain) {

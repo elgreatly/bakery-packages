@@ -23,8 +23,8 @@ export class BakeryManager implements IBakeryManager {
 
     getPackagesForItems(bakeryItem: BakeryItemModel): BakeryResultModel {
         let resultPackage: BakeryResultModel = new BakeryResultModel();
-        let bakeryRepository =  new BakeryRepository();
-        let packages = bakeryRepository.getAvailablePackages(bakeryItem.type);
+        const bakeryRepository =  new BakeryRepository();
+        const packages = bakeryRepository.getAvailablePackages(bakeryItem.type);
         let remain = bakeryItem.quantity;
         let i = 0;
         let j = 1;
